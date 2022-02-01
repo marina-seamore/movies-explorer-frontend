@@ -1,0 +1,26 @@
+.navtab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff99;
+    border-radius: 3px;
+    height: 36px;
+    width: 129px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: white;
+    margin: 146px 0 75px;
+}
+@media all and (max-width: 1200px) {
+    .navtab {
+        margin: 92px auto 76px;
+    }
+}
+
+@media all and (max-width: 725px) {
+    .navtab {
+        margin: 80px auto 30px;
+    }
+}

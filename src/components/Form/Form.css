@@ -1,0 +1,129 @@
+.form {
+    width: 410px;
+    display: flex;
+    flex-direction: column;
+    margin: 148px auto 0;
+    color: white;
+}
+.form__header {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    margin: 0;
+}
+.form__header_centre {
+    text-align: center;
+}
+.form__inputs {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.form__inputs_edit {
+    margin: 123px 0 220px;
+}
+.form__inputs_register {
+    margin: 40px 0 69px;
+}
+.form__inputs_login {
+    margin: 40px 0 159px;
+}
+.form__button {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 16px;
+    padding: 0;
+}
+.form__button_edit {
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.23;
+}
+.form__button_register {
+    background-color: #4285F4;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.21;
+    height: 45px;
+}
+.link__span_active {
+    color: #4285F4;
+    margin-left: 6px;
+}
+.link__span_disable {
+    display: none;
+}
+.form__button_login {
+    background-color: #4285F4;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.21;
+    height: 45px;
+}
+.form__link {
+    cursor: pointer;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 16px;
+    text-decoration: 0;
+    padding: 0;
+}
+.form__link_redirect {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.21;
+    color: #8B8B8B;
+}
+.form__link_logout {
+    color: #EE3465;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.23;
+}
+
+@media all and (max-width: 1200px) {
+    .form {
+        margin-top: 310px;
+        width: 396px;
+    }
+}
+
+@media all and (max-width: 725px) {
+    .form {
+        margin-top: 144px;
+        width: 260px;
+    }
+    .form__button_login {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+    .form__link_redirect {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+    .form__header {
+        text-align: center;
+    }
+    .form__button_edit {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+    .form__link_logout {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+    .form__button_register {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+}
