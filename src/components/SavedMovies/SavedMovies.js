@@ -6,7 +6,7 @@ function SavedMovies() {
     return (
         <section className='saved-movies'>
             <SearchForm />
-            <MoviesCardList />
+            <MoviesCardList state={({saved: 'remove', save: 'remove'})} />
         </section>
     )
 }

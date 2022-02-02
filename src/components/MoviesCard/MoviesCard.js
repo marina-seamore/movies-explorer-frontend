@@ -1,12 +1,12 @@
 import './MoviesCard.css';
 import img from '../../images/film-filler.jpg'
 
-function MoviesCard({saved}) {
+function MoviesCard({state}) {
 
     const name = 'В погоне за Бенкси';
     const time = '27';
-    const buttonText = (`${saved ? '' : 'Сохранить'}`);
-    const buttonClassName = (`card__button ${saved ? 'card__button_saved' : 'card__button_save'}`)
+    const buttonText = (`${state === 'save' ? 'Сохранить' : ''}`);
+    const buttonClassName = (`card__button card__button_${state}`)
 
     return(
         <div className='card'>

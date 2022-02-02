@@ -6,7 +6,7 @@ function Movies() {
     return (
         <section className='movies'>
             <SearchForm />
-            <MoviesCardList />
+            <MoviesCardList state={({ saved: 'saved', save: 'save' })} />
         </section>
     )
 }

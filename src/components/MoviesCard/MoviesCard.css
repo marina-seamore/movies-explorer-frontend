@@ -39,6 +39,7 @@
     border: none;
     color: white;
     margin: 18px auto;
+    padding: 0;
 }
 .card__button_save {
     background-color: #313131;
@@ -49,7 +50,14 @@
 .card__button_saved {
     background-color: #EE3465;
     background-image: url('../../images/check.svg');
-    background-size: 8px 4.5px contain;
+    background-size: 11px 7.5px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.card__button_remove {
+    background-color: #313131;
+    background-image: url('../../images/cross.svg');
+    background-size: 12px;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -57,5 +65,25 @@
 @media all and (max-width: 1200px) {
     .card__img {
         height: 190px;
+    }
+}
+
+@media all and (max-width: 725px) {
+    .card__info {
+        margin: 14px;
+    }
+    .card__name {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .card__time {
+        font-size: 10px;
+        line-height: 1.8;
+    }
+    .card__img {
+        height: 168px;
+    }
+    .card__button {
+        margin: 14px auto;
     }
 }
