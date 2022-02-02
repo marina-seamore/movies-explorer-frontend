@@ -19,6 +19,7 @@
 }
 .search__input:focus-visible {
     outline: none;
+    border-bottom: white solid 1px;
 }
 .search__button {
     background-color: #4285F4;

@@ -18,6 +18,7 @@
 }
 .login__input:focus-visible {
     outline: none;
+    border: rgba(255, 255, 255, 0.5) solid 1px;
 }
 .login__error-text {
     font-size: 10px;
