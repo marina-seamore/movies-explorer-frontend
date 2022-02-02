@@ -1,11 +1,11 @@
-.profile__input-box {
+.form__profile-input-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0;
     width: 100%;
 }
-.profile__input {
+.form__profile-input {
     background-color: transparent;
     border: none;
     font-size: 11px;
@@ -17,11 +17,11 @@
     text-align: right;
     padding: 0;
 }
-.profile__input:focus-visible {
+.form__profile-input:focus-visible {
     outline: none;
     font-size: 14px;
 }
-.profile__label {
+.form__profile-label {
     font-size: 11px;
     font-weight: 400;
     line-height: 1.18;
@@ -30,7 +30,7 @@
     text-align: left;
     width: 100px;
 }
-.profile__line {
+.form__profile-line {
     max-width: 100%;
     height: 1px;
     background-color: #424242;

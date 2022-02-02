@@ -52,11 +52,15 @@
     line-height: 1.21;
     height: 45px;
 }
-.link__span_active {
+.form__span {
+    display: none;
+}
+.form__span_active {
     color: #4285F4;
     margin-left: 6px;
+    display: inline;
 }
-.link__span_disable {
+.form__span_disable {
     display: none;
 }
 .form__button_login {

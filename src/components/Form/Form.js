@@ -6,7 +6,7 @@ function Form({ header, onSubmit, submit, link, children, span }) {
     const linkClassName = (`form__link form__link_${link.name}`);
     const submitClassName = (`form__button form__button_${submit.name}`);
     const inputsDivClassName = (`form__inputs form__inputs_${submit.name}`);
-    const spanClassName = (`link__span${span.active}`);
+    const spanClassName = (`form__span form__span${span.active}`);
     const headerClassName = (`form__header ${header.align}`)
 
     return (

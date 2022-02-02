@@ -34,15 +34,15 @@ function Profile({ onLogout, onEdit }) {
             span={({ active: '_disable' })}
             onSubmit={handleSubmit}
         >
-            <div className='profile__input-box'>
-                <label className='profile__label'>Имя</label>
-                <input type='text' className='profile__input' name='form-name' required value={name || ''}
+            <div className='form__profile-input-box'>
+                <label className='form__profile-label'>Имя</label>
+                <input type='text' className='form__profile-input' name='form-name' required value={name || ''}
                     onChange={handleNameChange} />
             </div>
-            <figure className='profile__line' />
-            <div className='profile__input-box'>
-                <label className='profile__label'>E-mail</label>
-                <input type='email' className='profile__input' name='form-email' required value={email || ''}
+            <figure className='form__profile-line' />
+            <div className='form__profile-input-box'>
+                <label className='form__profile-label'>E-mail</label>
+                <input type='email' className='form__profile-input' name='form-email' required value={email || ''}
                     onChange={handleEmailChange} />
             </div>
 

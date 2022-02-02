@@ -31,18 +31,18 @@ function Register({ onRegister, toSignin }) {
             span={({ text: 'Войти', active: '_active' })}
             onSubmit={handleSubmit}
         >
-            <label className='register__label'>Имя</label>
-            <input type='text' className='register__input' name='form-name' value={name || ''}
+            <label className='form__register-label'>Имя</label>
+            <input type='text' className='form__register-input' name='form-name' value={name || ''}
                 onChange={handleNameChange} minLength='3' required />
-            <span className='register__error-text'></span>
-            <label className='register__label'>E-mail</label>
-            <input type='email' className='register__input' name='form-email' value={email || ''}
+            <span className='form__register-error-text'></span>
+            <label className='form__register-label'>E-mail</label>
+            <input type='email' className='form__register-input' name='form-email' value={email || ''}
                 onChange={handleEmailChange} required />
-            <span className='register__error-text'></span>
-            <label className='register__label'>Пароль</label>
-            <input type='password' className='register__input' name='form-password' value={password || ''}
+            <span className='form__register-error-text'></span>
+            <label className='form__register-label'>Пароль</label>
+            <input type='password' className='form__register-input' name='form-password' value={password || ''}
                 onChange={handlePasswordChange} required />
-            <span className='register__error-text'></span>
+            <span className='form__register-error-text'></span>
         </Form>
     )
 }

@@ -1,10 +1,10 @@
-.register__label {
+.form__register-label {
     color: #8B8B8B;
     font-size: 10px;
     font-weight: 400;
     line-height: 1.2;
 }
-.register__input {
+.form__register-input {
     background-color: #2F2F2F;
     border: none;
     border-radius: 8px;
@@ -16,14 +16,14 @@
     width: 100%;
     color: white;
 }
-.register__input:focus-visible {
+.form__register-input:focus-visible {
     outline: none;
     border: rgba(255, 255, 255, 0.5) solid 1px;
 }
-.register__input:invalid {
+.form__register-input:invalid {
     color: #EE3465;
 }
-.register__error-text {
+.form__register-error-text {
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;

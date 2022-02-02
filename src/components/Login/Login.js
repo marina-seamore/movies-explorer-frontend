@@ -26,14 +26,14 @@ function Login({ onLogin, toSignup }) {
             onSubmit={handleSubmit}
         >
 
-            <label className='login__label'>E-mail</label>
-            <input type='email' className='login__input' name='form-email' value={email || ''}
+            <label className='form__label'>E-mail</label>
+            <input type='email' className='form__input' name='form-email' value={email || ''}
                 onChange={handleEmailChange} required />
-            <span className='login__error-text'></span>
-            <label className='login__label'>Пароль</label>
-            <input type='password' className='login__input' name='form-password' value={password || ''}
+            <span className='form__error-text'></span>
+            <label className='form__label'>Пароль</label>
+            <input type='password' className='form__input' name='form-password' value={password || ''}
                 onChange={handlePasswordChange} required />
-            <span className='login__error-text'></span>
+            <span className='form__error-text'></span>
 
         </Form>
     )

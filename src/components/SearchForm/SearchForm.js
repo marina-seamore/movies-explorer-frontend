@@ -12,7 +12,7 @@ function SearchForm() {
                     <input className='search__slider' type='checkbox' name='shortFilms' id='slider' />
                     <label className='search__label' htmlFor='slider'>Короткометражки</label>
                 </form>
-                <figure className='search__line' />
+                <figure className='line' />
             </Container>
     );
 };

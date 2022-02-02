@@ -120,7 +120,7 @@
     margin: 22px 22px 0 auto;
     padding: 0;
 }
-.nav__popup_links {
+.nav__popup-links {
     display: flex;
     flex-direction: column;
     margin: 105px auto 0;
@@ -136,15 +136,15 @@
     width: max-content;
     text-align: center;
 }
-.nav__link_line {
+.nav__link-line {
     width: 100%;
     height: 1px;
     margin: 4px 0 0;
 }
-.nav__link_line_active {
+.nav__link-line_active {
     background-color: white;
 }
-.nav__link_line_off {
+.nav__link-line_off {
     background-color: #202020;
 }
 

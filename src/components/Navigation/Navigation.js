@@ -52,15 +52,15 @@ function Navigation({ isLoggedIn }) {
             <div className={`overlay ${popupIsOpened ? 'overlay_on' : ''}`} onMouseDown={handleOverlayClose}>
                 <div className='nav__popup'>
                     <button className='nav__popup-close' onClick={onClose}></button>
-                    <div className='nav__popup_links'>
+                    <div className='nav__popup-links'>
                         <a className='nav__link nav__link_popup' href='/'>Главная
-                            <figure className='nav__link_line nav__link_line_off' />
+                            <figure className='nav__link-line nav__link-line_off' />
                         </a>
                         <a className='nav__link nav__link_popup' href='/movies'>Фильмы
-                            <figure className='nav__link_line nav__link_line_active' />
+                            <figure className='nav__link-line nav__link-line_active' />
                         </a>
                         <a className='nav__link nav__link_popup' href='/saved-movies'>Сохранённые фильмы
-                            <figure className='nav__link_line nav__link_line_off' />
+                            <figure className='nav__link-line nav__link-line_off' />
                         </a>
                     </div>
                     <a className='nav__link nav__link_account' href='/profile'>Аккаунт</a>
