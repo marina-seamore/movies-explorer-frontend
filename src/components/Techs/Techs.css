@@ -78,6 +78,9 @@
 }
 
 @media all and (max-width: 725px) {
+    .techs {
+        background-color: transparent;
+    }
     .techs__title {
         margin-top: 70px;
         font-size: 18px;
