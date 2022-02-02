@@ -4,10 +4,10 @@ import './SavedMovies.css'
 
 function SavedMovies() {
     return (
-        <section className='saved-movies'>
+        <main className='saved-movies'>
             <SearchForm />
             <MoviesCardList state={({saved: 'remove', save: 'remove'})} />
-        </section>
+        </main>
     )
 }
 
