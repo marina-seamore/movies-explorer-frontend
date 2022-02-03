@@ -1,5 +1,8 @@
 .portfolio {
     margin: 100px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .portfolio__title {
     margin: 0 0 50px;
