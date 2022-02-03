@@ -7,6 +7,7 @@ function Movies() {
         <main className='movies'>
             <SearchForm />
             <MoviesCardList state={({ saved: 'saved', save: 'save' })} />
+            <button className='movies__button'>Ещё</button>
         </main>
     )
 }

@@ -16,7 +16,6 @@ function MoviesCardList({ state }) {
                 <MoviesCard state={state.saved} />
                 <MoviesCard state={state.saved} />
             </section>
-            <button className='card-list__button'>Ещё</button>
         </>
     )
 }
