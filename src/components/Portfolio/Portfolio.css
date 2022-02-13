@@ -26,6 +26,10 @@
     cursor: pointer;
     text-decoration: none;
     letter-spacing: -0.04em;
+    transition: opacity 0.3s ease;
+}
+.portfolio__project-link:hover {
+    opacity: 0.8;
 }
 .portfolio__line {
     max-width: 100%;

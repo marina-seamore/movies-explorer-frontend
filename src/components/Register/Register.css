@@ -23,8 +23,11 @@
 .form__register-input:invalid {
     color: #EE3465;
 }
-.form__register-error-text {
+.form__error-text {
     font-size: 10px;
     line-height: 12px;
     color: #EE3465;
+}
+.none {
+    display: none;
 }
