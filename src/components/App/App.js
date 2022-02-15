@@ -6,7 +6,7 @@ import Movies from '../Movies/Movies';
 import Profile from '../Profile/Profile';
 import Register from '../Register/Register';
 import SavedMovies from '../SavedMovies/SavedMovies';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, Redirect } from 'react-router-dom';
 import './App.css';
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
@@ -15,10 +15,11 @@ import { CurrectUserContext } from '../../context/CurrentUserContext';
 import * as mainApi from '../../utils/MainApi';
 import * as movieApi from '../../utils/MovieApi';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import Preloader from '../Preloader/Preloader';
 
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = React.useState(true);
+  const [isLoggedIn, setIsLoggedIn] = React.useState(null);
   const [currentUser, setCurrentUser] = React.useState({ email: '', name: '', id: '' });
   const [movies, setMovies] = React.useState([]);
   const [noMoviesFound, setNoMoviesFound] = React.useState(false);
@@ -27,6 +28,8 @@ function App() {
   const [errorOnSubmit, setErrorOnSubmit] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false);
   const [savedMovies, setSavedMovies] = React.useState([]);
+  const [searchShort, setSearchShort] = React.useState(false);
+  const [searchMovieName, setSearchMovieName] = React.useState('');
 
   const history = useHistory();
 
@@ -53,8 +56,7 @@ function App() {
     history.push('/');
   };
 
-
-  React.useEffect(() => {
+  function tokenCheck() {
     const token = localStorage.getItem('token');
     if (token) {
       mainApi.tokenCheck()
@@ -69,7 +71,11 @@ function App() {
     } else {
       setIsLoggedIn(false);
     }
-  }, [isLoggedIn]);
+  }
+
+  React.useEffect(() => {
+    tokenCheck();
+  }, []);
 
 
   /** Functions with new user info */
@@ -108,22 +114,28 @@ function App() {
   };
 
   /** MovieSearch */
+  function handleCheckbox() {
+    setSearchShort(!searchShort);
+  }
 
   function searchMovie(movieName) {
     setIsLoading(true)
 
     movieApi.getBeatfilmMovies()
       .then((movieData) => {
-        const result = movieData.filter(
+        const moviesFound = movieData.filter(
           (item) => item.nameRU.toLowerCase().includes(movieName.toLowerCase())
-        )
+        );
+        const result = searchShort ? moviesFound.filter((item) => item.duration <= 40) : moviesFound
         if (result.length === 0) {
           setNoMoviesFound(true);
           setMovies([]);
         } else {
           setNoMoviesFound(false);
           setMovies(result);
-          localStorage.setItem('moviesArray', JSON.stringify(result))
+          localStorage.setItem('moviesArray', JSON.stringify(result));
+          localStorage.setItem('movieSearchName', movieName);
+          localStorage.setItem('short', searchShort);
         }
         setIsLoading(false);
       })
@@ -138,8 +150,12 @@ function App() {
     if (isLoggedIn) {
       getSavedMovies();
       const storageMovies = localStorage.getItem('moviesArray');
+      const storageMovieName = localStorage.getItem('movieSearchName');
+      const storageIsShort = localStorage.getItem('short');
       if (storageMovies) {
         setMovies(JSON.parse(storageMovies));
+        setSearchMovieName(storageMovieName)
+        setSearchShort(storageIsShort === 'true');
       }
     }
   }, [isLoggedIn])
@@ -191,7 +207,8 @@ function App() {
         }
       })
       .catch((err) => console.log(`getSavedMovies: ${err}`))
-  }
+  };
+
   function searchInSavedMovies(movieName) {
     setIsLoading(true);
     mainApi.getMovies()
@@ -219,79 +236,93 @@ function App() {
     <CurrectUserContext.Provider value={currentUser}>
       <div className='app'>
 
-        <Switch>
-          <Route exact path='/'>
-            <Header />
-            <Navigation isLoggedIn={isLoggedIn} />
-            <Main />
-            <Footer />
-          </Route>
+        {isLoggedIn === null
+          ? <Preloader />
+          : <>
+            <Switch>
+              <Route exact path='/'>
+                <Header />
+                <Navigation isLoggedIn={isLoggedIn} />
+                <Main />
+                <Footer />
+              </Route>
 
-          <ProtectedRoute path='/movies' isLoggedIn={isLoggedIn}>
-            <Header />
-            <Navigation isLoggedIn={isLoggedIn} />
-            <Movies
-              onSubmitSearch={searchMovie}
-              movies={movies}
-              isLoading={isLoading}
-              noMovies={noMoviesFound}
-              errorCaught={errorOnSearch}
-              onCardSave={(movie) => { handleCardSave(movie) }}
-              onCardRemove={handleCardRemoveMovies}
-              isSaved={isSaved}
-            />
-            <Footer />
-          </ProtectedRoute>
+              <ProtectedRoute path='/movies' isLoggedIn={isLoggedIn}>
+                <Header />
+                <Navigation isLoggedIn={isLoggedIn} />
+                <Movies
+                  onSubmitSearch={searchMovie}
+                  movies={movies}
+                  isLoading={isLoading}
+                  noMovies={noMoviesFound}
+                  errorCaught={errorOnSearch}
+                  onCardSave={(movie) => { handleCardSave(movie) }}
+                  onCardRemove={handleCardRemoveMovies}
+                  isSaved={isSaved}
+                  handleCheckbox={handleCheckbox}
+                  checkbox={searchShort}
+                  searchMovieName={searchMovieName}
+                />
+                <Footer />
+              </ProtectedRoute>
 
-          < ProtectedRoute path='/saved-movies' isLoggedIn={isLoggedIn}>
-            <Header />
-            <Navigation isLoggedIn={isLoggedIn} />
-            <SavedMovies
-              onSubmitSearch={searchInSavedMovies}
-              savedMovies={savedMovies}
-              isLoading={isLoading}
-              noMovies={noSavedMovies}
-              errorCaught={errorOnSearch}
-              onCardRemove={handleCardRemoveSavedMovies}
-              isSaved={isSaved}
-            />
-            <Footer />
-          </ProtectedRoute>
+              < ProtectedRoute path='/saved-movies' isLoggedIn={isLoggedIn}>
+                <Header />
+                <Navigation isLoggedIn={isLoggedIn} />
+                <SavedMovies
+                  onSubmitSearch={searchInSavedMovies}
+                  savedMovies={savedMovies}
+                  isLoading={isLoading}
+                  noMovies={noSavedMovies}
+                  errorCaught={errorOnSearch}
+                  onCardRemove={handleCardRemoveSavedMovies}
+                  isSaved={isSaved}
+                />
+                <Footer />
+              </ProtectedRoute>
 
-          <ProtectedRoute path='/profile' isLoggedIn={isLoggedIn}>
-            <Header />
-            <Navigation isLoggedIn={isLoggedIn} />
-            < Profile
-              onLogout={onLogout}
-              onEdit={onEdit}
-            />
-          </ProtectedRoute>
+              <ProtectedRoute path='/profile' isLoggedIn={isLoggedIn}>
+                <Header />
+                <Navigation isLoggedIn={isLoggedIn} />
+                < Profile
+                  onLogout={onLogout}
+                  onEdit={onEdit}
+                />
+              </ProtectedRoute>
 
 
-          <Route path='/signin'>
-            <Header onlyLogo={true} />
-            <Login
-              onLogin={onLogin}
-              toSignup={toSignup}
-              error={errorOnSubmit}
-            />
-          </Route>
+              <Route path='/signin'>
+                {isLoggedIn
+                  ? <Redirect to='/profile' />
+                  : <><Header onlyLogo={true} />
+                    <Login
+                      onLogin={onLogin}
+                      toSignup={toSignup}
+                      error={errorOnSubmit}
+                    /></>
+                }
+              </Route>
 
-          <Route path='/signup'>
-            <Header onlyLogo={true} />
-            <Register
-              onRegister={register}
-              toSignin={toSignin}
-              isLoading={isLoading}
-              errorOnSubmit={errorOnSubmit}
-            />
-          </Route>
+              <Route path='/signup'>
+                {isLoggedIn
+                  ? <Redirect to='/profile' />
+                  : <><Header onlyLogo={true} />
+                    <Register
+                      onRegister={register}
+                      toSignin={toSignin}
+                      isLoading={isLoading}
+                      errorOnSubmit={errorOnSubmit}
+                    /></>
+                }
+              </Route>
 
-          <Route path='*'>
-            <PageNotFound goback={goBack} />
-          </Route>
+              <Route path='*'>
+                <PageNotFound goback={goBack} />
+              </Route>
 
-        </Switch>
+            </Switch>
+          </>
+        }
 
       </div>
 
