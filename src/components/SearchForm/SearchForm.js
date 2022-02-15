@@ -8,13 +8,12 @@ function SearchForm({ onSubmitSearch, checkbox, handleCheckbox }) {
 
     function handleNameChange(e) {
         setMovieName(e.target.value)
-    }
+    };
 
     function handleSubmit(e) {
         e.preventDefault();
         onSubmitSearch(movieName);
-        setMovieName('');
-    }
+    };
 
     return (
         <Container>
