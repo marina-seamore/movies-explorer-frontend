@@ -1,4 +1,5 @@
 import React from 'react';
+import { CurrectUserContext } from '../../context/CurrentUserContext';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
@@ -8,6 +9,7 @@ function SavedMovies({ onSubmitSearch, savedMovies, onCardRemove, isSaved, noMov
 
     const [checkbox, setCheckbox] = React.useState(false);
     const [foundSavedMovies, setFoundSavedMovies] = React.useState([]);
+    const currentUser = React.useContext(CurrectUserContext);
 
     function handleCheckbox() {
         setCheckbox(!checkbox)
@@ -16,6 +18,11 @@ function SavedMovies({ onSubmitSearch, savedMovies, onCardRemove, isSaved, noMov
     React.useEffect(() => {
         checkbox ? setFoundSavedMovies(savedMovies.filter((item) => item.duration <= 40)) : setFoundSavedMovies(savedMovies)
     }, [checkbox, savedMovies]);
+
+    React.useEffect(() => {
+        const ownCards = savedMovies.filter((item) => item.owner === currentUser.id);
+        setFoundSavedMovies(ownCards);
+    }, [currentUser.id, savedMovies])
 
     return (
         <main className='saved-movies'>
