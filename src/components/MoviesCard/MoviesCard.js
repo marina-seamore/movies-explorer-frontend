@@ -7,7 +7,7 @@ function MoviesCard({ card, onCardSave, onCardRemove, isSaved }) {
   const name = card.nameRU;
   const time = card.duration;
   const img = (`${page === '/movies' ? `https://api.nomoreparties.co/${card.image.url}` : card.image}`)
-  const link = card.trailerLink;
+  const link = (`${page === '/movies' ? card.trailerLink: card.trailer}`);
   const buttonText = (`${page === '/saved-movies' || isSaved(card) ? '' : 'Сохранить'}`);
   const buttonClassName = (`card__button ${page === '/movies' ? `card__button_save${isSaved(card) ? 'd' : ''}` : 'card__button_remove'}`);
 
@@ -17,7 +17,7 @@ function MoviesCard({ card, onCardSave, onCardRemove, isSaved }) {
 
   function handleRemove() {
     onCardRemove(card);
-  }
+  };
 
   function handleBtnClick() {
     if (page === '/movies' && !isSaved(card)) {
@@ -25,7 +25,7 @@ function MoviesCard({ card, onCardSave, onCardRemove, isSaved }) {
     } else {
       handleRemove();
     }
-  }
+  };
 
   return (
     <div className='card'>
