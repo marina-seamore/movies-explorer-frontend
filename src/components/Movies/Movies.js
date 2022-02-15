@@ -4,31 +4,20 @@ import Preloader from '../Preloader/Preloader';
 import SearchForm from '../SearchForm/SearchForm';
 import './Movies.css';
 
-function Movies({ onSubmitSearch, movies, isLoading, noMovies, errorCaught, onCardSave, onCardRemove, isSaved }) {
-
-    const [checkbox, setCheckbox] = React.useState(false);
-    const [foundMovies, setFoundMovies] = React.useState([]);
-
-    function handleCheckbox() {
-        setCheckbox(!checkbox)
-    }
-
-    React.useEffect(() => {
-        checkbox ? setFoundMovies(movies.filter((item) => item.duration <= 40)) : setFoundMovies(movies)
-    }, [checkbox, movies]);
-
+function Movies({ onSubmitSearch, movies, isLoading, noMovies, errorCaught, onCardSave, onCardRemove, isSaved, handleCheckbox, checkbox, searchMovieName }) {
 
     return (
         <main className='movies'>
             <SearchForm
                 onSubmitSearch={onSubmitSearch}
-                checkbox={checkbox}
                 handleCheckbox={handleCheckbox}
+                checkbox={checkbox}
+                searchMovieName={searchMovieName}
             />
             {isLoading
                 ? <Preloader />
                 : <MoviesCardList
-                    movies={foundMovies}
+                    movies={movies}
                     noMovies={noMovies}
                     errorCaught={errorCaught}
                     isSaved={isSaved}
