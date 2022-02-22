@@ -36,6 +36,17 @@
     text-align: center;
     margin: 0 0 16px;
     padding: 0;
+    transition: transform 0.2s ease;
+}
+.form__button:hover {
+    transform: scale(1.05, 1.05);
+}
+.form__button_disable {
+    opacity: 0.5;
+    cursor: auto;
+}
+.form__button_disable:hover {
+    transform: none;
 }
 .form__button_edit {
     color: white;
@@ -81,6 +92,10 @@
     margin: 0 0 16px;
     text-decoration: 0;
     padding: 0;
+    transition: transform 0.2s ease;
+}
+.form__link:hover {
+    transform: scale(1.05, 1.05);
 }
 .form__link_redirect {
     font-size: 14px;
@@ -93,6 +108,14 @@
     font-size: 13px;
     font-weight: 500;
     line-height: 1.23;
+}
+
+.form__submit-error {
+    color: #EE3465;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.21;
+    text-align: center;
 }
 
 @media all and (max-width: 1200px) {

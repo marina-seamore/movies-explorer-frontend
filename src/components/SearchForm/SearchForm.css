@@ -20,8 +20,10 @@
 .search__input:focus-visible {
     outline: none;
     border-bottom: white solid 1px;
+    color: white;
 }
 .search__button {
+    cursor: pointer;
     background-color: #4285F4;
     width: 100px;
     height: 52px;
@@ -32,6 +34,10 @@
     font-size: 14px;
     line-height: 1.29;
     font-weight: 500;
+    transition: transform ease 0.3s;
+}
+.search__button:hover {
+    transform: scale(1.05, 1.05);
 }
 .line {
     max-width: 100%;

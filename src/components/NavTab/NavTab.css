@@ -12,7 +12,12 @@
     line-height: 1.33;
     color: white;
     margin: 146px 0 75px;
+    transition: transform 0.3s ease;
 }
+.navtab:hover {
+    transform: scale(1.05, 1.05);
+}
+
 @media all and (max-width: 1200px) {
     .navtab {
         margin: 92px auto 76px;

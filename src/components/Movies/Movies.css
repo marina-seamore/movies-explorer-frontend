@@ -5,30 +5,30 @@
     align-items: center;
 }
 
-.movies__button {
-    width: 320px;
-    height: 36px;
-    background-color: #2f2f2f;
+.movies__error {
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 1.16;
     color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    margin: 80px auto;
+    margin: auto 70px;
     padding: 0;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.25;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    opacity: 0.8;
 }
 
 @media all and (max-width: 1200px) {
-    .movies__button {
-        margin-top: 90px;
+    .movies__error {
+        font-size: 30px;
+        line-height: 1.25;
     }
 }
 
 @media all and (max-width: 725px) {
-    .movies__button {
-        width: 240px;
-        margin-top: 80px;
+    .movies__error {
+        font-size: 20px;
+        line-height: 1.27;
+        margin: auto 20px;
     }
 }
